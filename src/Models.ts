@@ -339,3 +339,100 @@ export interface NotificationHistoryResponseItem {
   sendAttempts: SendAttempt[]
   signedPayload: string
 }
+
+// https://developer.apple.com/documentation/appstoreserverapi/consumptionrequest
+export interface ConsumptionRequest {
+  accountTenure: AccountTenure
+  appAccountToken: string
+  consumptionStatus: ConsumptionStatus
+  customerConsented: boolean
+  deliveryStatus: DeliveryStatus
+  lifetimeDollarsPurchased: LifetimeDollarsPurchased
+  lifetimeDollarsRefunded: LifetimeDollarsRefunded
+  platform: Platform
+  playTime: PlayTime
+  sampleContentProvided: boolean
+  userStatus: UserStatus
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/accounttenure
+export enum AccountTenure {
+  Undeclared = 0,
+  Between0And3 = 1,
+  Between3And10 = 2,
+  Between10And30 = 3,
+  Between30And90 = 4,
+  Between90And180 = 5,
+  Between180And365 = 6,
+  Over365 = 7,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/consumptionstatus
+export enum ConsumptionStatus {
+  Undeclared = 0,
+  NotConsumed = 1,
+  PartiallyConsumed = 2,
+  FullyConsumed = 3,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/deliverystatus
+export enum DeliveryStatus {
+  DeliveredAndWorking = 0,
+  NotDeliveredBecauseQuality = 1,
+  DeliveredWrong = 2,
+  NotDeliveredBecauseOutage = 3,
+  NotDeliveredBecauseCurrencyChange = 4,
+  NotDeliveredBecauseOther = 5,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/lifetimedollarspurchased
+export enum LifetimeDollarsPurchased {
+  Undeclared = 0,
+  Amount0 = 1,
+  Between0_01And49_99 = 2,
+  Between50And99_99 = 3,
+  Between100And499_99 = 4,
+  Between500And999_99 = 5,
+  Between1000And1999_99 = 6,
+  Over2000 = 7,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/lifetimedollarsrefunded
+export enum LifetimeDollarsRefunded {
+  Undeclared = 0,
+  Amount0 = 1,
+  Between0_01And49_99 = 2,
+  Between50And99_99 = 3,
+  Between100And499_99 = 4,
+  Between500And999_99 = 5,
+  Between1000And1999_99 = 6,
+  Over2000 = 7,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/platform
+export enum Platform {
+  Undeclared = 0,
+  Apple = 1,
+  NonApple = 2,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/playtime
+export enum PlayTime {
+  Undeclared = 0,
+  Between0And5Min = 1,
+  Between5And60Min = 2,
+  Between1And6Hours = 3,
+  Between6And24Hours = 4,
+  Between1And4Days = 5,
+  Between4And16Days = 6,
+  Over16Days = 7,
+}
+
+// https://developer.apple.com/documentation/appstoreserverapi/userstatus
+export enum UserStatus {
+  Undeclared = 0,
+  Active = 1,
+  Suspended = 2,
+  Terminated = 3,
+  Limited = 4,
+}

@@ -2,7 +2,7 @@ import fetch from "node-fetch"
 import { v4 as uuidv4 } from "uuid"
 import * as jose from "jose"
 import {
-  CheckTestNotificationResponse,
+  CheckTestNotificationResponse, ConsumptionRequest,
   Environment,
   HistoryResponse,
   NotificationHistoryQuery,
@@ -115,6 +115,16 @@ export class AppStoreServerAPI {
   ): Promise<NotificationHistoryResponse> {
     const path = this.addQuery("/inApps/v1/notifications/history", { ...query })
     return this.makeRequest("POST", path, request)
+  }
+
+  /**
+   * https://developer.apple.com/documentation/appstoreserverapi/send_consumption_information
+   */
+  async sendConsumptionInformation(
+    transactionId: string,
+    body: ConsumptionRequest
+  ) {
+    return this.makeRequest("POST", `/inApps/v1/transactions/consumption/${transactionId}`, body)
   }
 
   /**
